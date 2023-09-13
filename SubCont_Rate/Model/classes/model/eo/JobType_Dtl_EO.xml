@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="JobType_Dtl_EO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="XXSC_JOB_TYPE_DTL"
+  AliasName="JobType_Dtl_EO"
+  BindingStyle="OracleName"
+  RowClass="model.eo.JobType_Dtl_EOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="JobTypeDtlId"
+    IsNotNull="true"
+    ColumnName="JOB_TYPE_DTL_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXSC_JOB_TYPE_DTL"
+    PrimaryKey="true"> 
+  </Attribute>
+  <Attribute
+    Name="JobTypeHdrId"
+    IsNotNull="true"
+    ColumnName="JOB_TYPE_HDR_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXSC_JOB_TYPE_DTL"/>
+  <Attribute
+    Name="JobTypeRate"
+    ColumnName="JOB_TYPE_RATE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXSC_JOB_TYPE_DTL"/>
+  <Attribute
+    Name="OvertimeRate"
+    ColumnName="OVERTIME_RATE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXSC_JOB_TYPE_DTL"/>
+  <Attribute
+    Name="IncentiveRate"
+    ColumnName="INCENTIVE_RATE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXSC_JOB_TYPE_DTL"/>
+  <Attribute
+    Name="EffectiveStartDate"
+    ColumnName="EFFECTIVE_START_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="XXSC_JOB_TYPE_DTL"/>
+  <Attribute
+    Name="EffectiveEndDate"
+    ColumnName="EFFECTIVE_END_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="XXSC_JOB_TYPE_DTL"/>
+  <Attribute
+    Name="CurrentRecordFlag"
+    Precision="1"
+    ColumnName="CURRENT_RECORD_FLAG"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSC_JOB_TYPE_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ActiveFlag"
+    Precision="1"
+    ColumnName="ACTIVE_FLAG"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSC_JOB_TYPE_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    Precision="60"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSC_JOB_TYPE_DTL"
+    IsUpdateable="while_insert"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    IsNotNull="true"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXSC_JOB_TYPE_DTL"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    Precision="60"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSC_JOB_TYPE_DTL"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXSC_JOB_TYPE_DTL"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="LastUpdateLogin"
+    IsNotNull="true"
+    Precision="150"
+    ColumnName="LAST_UPDATE_LOGIN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSC_JOB_TYPE_DTL"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EmployeeId"
+    ColumnName="EMPLOYEE_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXSC_JOB_TYPE_DTL"/>
+  <Attribute
+    Name="EmployeeName"
+    Precision="400"
+    ColumnName="EMPLOYEE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSC_JOB_TYPE_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="400"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EmployeeNumber"
+    Precision="50"
+    ColumnName="EMPLOYEE_NUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSC_JOB_TYPE_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="JobType_Hdr_EO"
+    Association="model.association.JobTypeHdrLine_Ass"
+    AssociationEnd="model.association.JobTypeHdrLine_Ass.JobType_Hdr_EO"
+    AssociationOtherEnd="model.association.JobTypeHdrLine_Ass.JobType_Dtl_EO"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="JobtypeDtlEoPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="JOBTYPE_DTL_EO_PRIMARY_KEY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.JobType_Dtl_EO.JobTypeDtlId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_JobType_Dtl_EO">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="JOBTYPE_HDR_EO_PRIMARY_KEY"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_JOB_TYPE_DTL_EO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.JobType_Dtl_EO.JobTypeHdrId"/>
+    </AttrArray>
+  </Key>
+</Entity>

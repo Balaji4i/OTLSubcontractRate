@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="SubcontRateBTF">
+        <default-activity>checkUser</default-activity>
+        <data-control-scope>
+            <shared/>
+        </data-control-scope>
+        <input-parameter-definition id="__13">
+            <name>tokens</name>
+            <value>#{pageFlowScope.tokens}</value>
+            <class>java.lang.String</class>
+            <required/>
+        </input-parameter-definition>
+        <managed-bean id="__8">
+            <managed-bean-name>PayrollHome</managed-bean-name>
+            <managed-bean-class>view.PayrollHome</managed-bean-class>
+            <managed-bean-scope>backingBean</managed-bean-scope>
+        </managed-bean>
+        <managed-bean id="__38">
+            <managed-bean-name>SubContRate</managed-bean-name>
+            <managed-bean-class>view.SubContRate</managed-bean-class>
+            <managed-bean-scope>backingBean</managed-bean-scope>
+        </managed-bean>
+        <managed-bean id="__40">
+            <managed-bean-name>JobType</managed-bean-name>
+            <managed-bean-class>view.JobType</managed-bean-class>
+            <managed-bean-scope>backingBean</managed-bean-scope>
+        </managed-bean>
+        <view id="DashBoard">
+            <page>/fragments/DashBoard.jsff</page>
+            <redirect/>
+        </view>
+        <view id="SearchSubcontRate">
+            <page>/fragments/SearchSubcontRate.jsff</page>
+        </view>
+        <view id="Invalid">
+            <page>/fragments/Invalid.jsff</page>
+        </view>
+        <router id="router">
+            <case id="__11">
+                <expression>#{pageFlowScope.val eq 'validUser'}</expression>
+                <outcome>ValidUser</outcome>
+            </case>
+            <case id="__12">
+                <expression>#{pageFlowScope.val eq 'invalidUser'}</expression>
+                <outcome>InvalidUser</outcome>
+            </case>
+            <default-outcome>ValidUser</default-outcome>
+        </router>
+        <method-call id="checkUser">
+            <method>#{backingBeanScope.PayrollHome.checkUser}</method>
+            <outcome>
+                <fixed-outcome>check</fixed-outcome>
+            </outcome>
+        </method-call>
+        <view id="AddEditSubcontRate">
+            <page>/fragments/AddEditSubcontRate.jsff</page>
+        </view>
+        <method-call id="ExecuteWithParams1">
+            <method>#{bindings.ExecuteWithParams.execute}</method>
+            <outcome>
+                <fixed-outcome>ExecuteWithParams</fixed-outcome>
+            </outcome>
+        </method-call>
+        <method-call id="Execute1">
+            <method>#{bindings.Execute.execute}</method>
+            <outcome>
+                <fixed-outcome>Execute</fixed-outcome>
+            </outcome>
+        </method-call>
+        <method-call id="CreateInsert">
+            <method>#{bindings.CreateInsert.execute}</method>
+            <outcome>
+                <fixed-outcome>CreateInsert</fixed-outcome>
+            </outcome>
+        </method-call>
+        <view id="SearchJobType">
+            <page>/fragments/SearchJobType.jsff</page>
+        </view>
+        <method-call id="CreateInsert1">
+            <method>#{bindings.CreateInsert.execute}</method>
+            <outcome>
+                <fixed-outcome>CreateInsert</fixed-outcome>
+            </outcome>
+        </method-call>
+        <method-call id="ExecuteWithParams">
+            <method>#{bindings.ExecuteWithParams.execute}</method>
+            <outcome>
+                <fixed-outcome>ExecuteWithParams</fixed-outcome>
+            </outcome>
+        </method-call>
+        <method-call id="Execute">
+            <method>#{bindings.Execute.execute}</method>
+            <outcome>
+                <fixed-outcome>Execute</fixed-outcome>
+            </outcome>
+        </method-call>
+        <view id="AddEditJobType">
+            <page>/fragments/AddEditJobType.jsff</page>
+        </view>
+        <control-flow-rule id="__1">
+            <from-activity-id>DashBoard</from-activity-id>
+            <control-flow-case id="__2">
+                <from-outcome>ToRate</from-outcome>
+                <to-activity-id>SearchSubcontRate</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__18">
+                <from-outcome>ToJobType</from-outcome>
+                <to-activity-id>SearchJobType</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__3">
+            <from-activity-id>SearchSubcontRate</from-activity-id>
+            <control-flow-case id="__4">
+                <from-outcome>ToDashboard</from-outcome>
+                <to-activity-id>DashBoard</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__29">
+                <from-outcome>edit</from-outcome>
+                <to-activity-id>ExecuteWithParams1</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__15">
+                <from-outcome>add</from-outcome>
+                <to-activity-id>CreateInsert</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__5">
+            <from-activity-id>router</from-activity-id>
+            <control-flow-case id="__6">
+                <from-outcome>ValidUser</from-outcome>
+                <to-activity-id>DashBoard</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__7">
+                <from-outcome>InvalidUser</from-outcome>
+                <to-activity-id>Invalid</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__9">
+            <from-activity-id>checkUser</from-activity-id>
+            <control-flow-case id="__10">
+                <from-outcome>check</from-outcome>
+                <to-activity-id>router</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__30">
+            <from-activity-id>ExecuteWithParams1</from-activity-id>
+            <control-flow-case id="__31">
+                <from-outcome>ExecuteWithParams</from-outcome>
+                <to-activity-id>AddEditSubcontRate</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__32">
+            <from-activity-id>AddEditSubcontRate</from-activity-id>
+            <control-flow-case id="__33">
+                <from-outcome>back</from-outcome>
+                <to-activity-id>Execute1</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__36">
+            <from-activity-id>Execute1</from-activity-id>
+            <control-flow-case id="__37">
+                <from-outcome>Execute</from-outcome>
+                <to-activity-id>SearchSubcontRate</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__16">
+            <from-activity-id>CreateInsert</from-activity-id>
+            <control-flow-case id="__17">
+                <from-outcome>CreateInsert</from-outcome>
+                <to-activity-id>AddEditSubcontRate</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__19">
+            <from-activity-id>SearchJobType</from-activity-id>
+            <control-flow-case id="__20">
+                <from-outcome>add</from-outcome>
+                <to-activity-id>CreateInsert1</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__25">
+                <from-outcome>edit</from-outcome>
+                <to-activity-id>ExecuteWithParams</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__14">
+                <from-outcome>Dashboard</from-outcome>
+                <to-activity-id>DashBoard</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__23">
+            <from-activity-id>CreateInsert1</from-activity-id>
+            <control-flow-case id="__24">
+                <from-outcome>CreateInsert</from-outcome>
+                <to-activity-id>AddEditJobType</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__26">
+            <from-activity-id>ExecuteWithParams</from-activity-id>
+            <control-flow-case id="__27">
+                <from-outcome>ExecuteWithParams</from-outcome>
+                <to-activity-id>AddEditJobType</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__28">
+            <from-activity-id>AddEditJobType</from-activity-id>
+            <control-flow-case id="__34">
+                <from-outcome>back</from-outcome>
+                <to-activity-id>Execute</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__35">
+            <from-activity-id>Execute</from-activity-id>
+            <control-flow-case id="__39">
+                <from-outcome>Execute</from-outcome>
+                <to-activity-id>SearchJobType</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <use-page-fragments/>
+        <visibility>
+            <url-invoke-allowed/>
+        </visibility>
+    </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="JobType_Hdr_EO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="XXSC_JOB_TYPE_HDR"
+  AliasName="JobType_Hdr_EO"
+  BindingStyle="OracleName"
+  RowClass="model.eo.JobType_Hdr_EOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="JobTypeHdrId"
+    IsNotNull="true"
+    ColumnName="JOB_TYPE_HDR_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXSC_JOB_TYPE_HDR"
+    PrimaryKey="true"> 
+  </Attribute>
+  <Attribute
+    Name="BusinessUnitId"
+    ColumnName="BUSINESS_UNIT_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXSC_JOB_TYPE_HDR"/>
+  <Attribute
+    Name="BusinessUnitName"
+    Precision="100"
+    ColumnName="BUSINESS_UNIT_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSC_JOB_TYPE_HDR"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Status"
+    Precision="30"
+    ColumnName="STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSC_JOB_TYPE_HDR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    Precision="60"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSC_JOB_TYPE_HDR"
+    IsUpdateable="while_insert"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    IsNotNull="true"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXSC_JOB_TYPE_HDR"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    Precision="60"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSC_JOB_TYPE_HDR"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXSC_JOB_TYPE_HDR"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="LastUpdateLogin"
+    IsNotNull="true"
+    Precision="150"
+    ColumnName="LAST_UPDATE_LOGIN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSC_JOB_TYPE_HDR"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="JobTypeCode"
+    Precision="100"
+    ColumnName="JOB_TYPE_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSC_JOB_TYPE_HDR"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="JobTypeName"
+    Precision="400"
+    ColumnName="JOB_TYPE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSC_JOB_TYPE_HDR"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="400"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="JobType_Dtl_EO"
+    Association="model.association.JobTypeHdrLine_Ass"
+    AssociationEnd="model.association.JobTypeHdrLine_Ass.JobType_Dtl_EO"
+    AssociationOtherEnd="model.association.JobTypeHdrLine_Ass.JobType_Hdr_EO"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="JobtypeHdrEoPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="JOBTYPE_HDR_EO_PRIMARY_KEY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.JobType_Hdr_EO.JobTypeHdrId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="XxscJobTypeHdrBusinessUnitNameCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"BUSINESS_UNIT_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="XXSC_JOB_TYPE_HDR_BUSINESS_UNI"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.JobType_Hdr_EO.BusinessUnitName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="XxscJobTypeHdrJobTypeCodeCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"JOB_TYPE_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="XXSC_JOB_TYPE_HDR_JOB_TYPE_COD"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.JobType_Hdr_EO.JobTypeCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="XxscJobTypeHdrJobTypeNameCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"JOB_TYPE_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="XXSC_JOB_TYPE_HDR_JOB_TYPE_NAM"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.JobType_Hdr_EO.JobTypeName"/>
+    </AttrArray>
+  </Key>
+</Entity>

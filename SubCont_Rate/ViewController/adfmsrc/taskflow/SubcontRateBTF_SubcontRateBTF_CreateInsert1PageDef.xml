@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="SubcontRateBTF_SubcontRateBTF_CreateInsert1PageDef" Package="taskflow" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="JobType_Hdr_VO" RangeSize="25" DataControl="Naresco_AMDataControl" id="JobType_Hdr_VOIterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="JobType_Hdr_VOIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

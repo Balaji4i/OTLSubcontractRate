@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.9.14" id="DataBindings"
+             SeparateXMLFiles="false" Package="view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/pages/Run.jspx" usageId="view_RunPageDef"/>
+    <page path="/fragments/SearchSubcontRate.jsff" usageId="view_SearchSubcontPageDef"/>
+    <page path="/fragments/AddEditSubcontRate.jsff" usageId="view_AddEditSubcontRatePageDef"/>
+    <page path="/WEB-INF/taskflow/SubcontRateBTF.xml#SubcontRateBTF@ExecuteWithParams1"
+          usageId="view_SubcontRateBTF_SubcontRateBTF_ExecuteWithParams1PageDef"/>
+    <page path="/WEB-INF/taskflow/SubcontRateBTF.xml#SubcontRateBTF@Execute1"
+          usageId="view_SubcontRateBTF_SubcontRateBTF_Execute1PageDef"/>
+    <page path="/WEB-INF/taskflow/SubcontRateBTF.xml#SubcontRateBTF@CreateInsert"
+          usageId="view_SubcontRateBTF_SubcontRateBTF_CreateInsertPageDef"/>
+    <page path="/WEB-INF/taskflow/SubcontRateBTF.xml#SubcontRateBTF@CreateInsert1"
+          usageId="view_SubcontRateBTF_SubcontRateBTF_CreateInsert1PageDef"/>
+    <page path="/fragments/SearchJobType.jsff" usageId="view_SearchJobTypePageDef"/>
+    <page path="/WEB-INF/taskflow/SubcontRateBTF.xml#SubcontRateBTF@ExecuteWithParams"
+          usageId="view_SubcontRateBTF_SubcontRateBTF_ExecuteWithParamsPageDef"/>
+    <page path="/WEB-INF/taskflow/SubcontRateBTF.xml#SubcontRateBTF@Execute"
+          usageId="view_SubcontRateBTF_SubcontRateBTF_ExecutePageDef"/>
+    <page path="/fragments/AddEditJobType.jsff" usageId="view_AddEditJobTypePageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_RunPageDef" path="pages.RunPageDef"/>
+    <page id="view_SearchSubcontPageDef" path="fragments.SearchSubcontRatePageDef"/>
+    <page id="view_AddEditSubcontRatePageDef" path="fragments.AddEditSubcontRatePageDef"/>
+    <page id="view_SubcontRateBTF_SubcontRateBTF_ExecuteWithParams1PageDef"
+          path="taskflow.SubcontRateBTF_SubcontRateBTF_ExecuteWithParams1PageDef"/>
+    <page id="view_SubcontRateBTF_SubcontRateBTF_Execute1PageDef"
+          path="taskflow.SubcontRateBTF_SubcontRateBTF_Execute1PageDef"/>
+    <page id="view_SubcontRateBTF_SubcontRateBTF_CreateInsertPageDef"
+          path="taskflow.SubcontRateBTF_SubcontRateBTF_CreateInsertPageDef"/>
+    <page id="view_SubcontRateBTF_SubcontRateBTF_CreateInsert1PageDef"
+          path="taskflow.SubcontRateBTF_SubcontRateBTF_CreateInsert1PageDef"/>
+    <page id="view_SearchJobTypePageDef" path="fragments.SearchJobTypePageDef"/>
+    <page id="view_SubcontRateBTF_SubcontRateBTF_ExecuteWithParamsPageDef"
+          path="taskflow.SubcontRateBTF_SubcontRateBTF_ExecuteWithParamsPageDef"/>
+    <page id="view_SubcontRateBTF_SubcontRateBTF_ExecutePageDef"
+          path="taskflow.SubcontRateBTF_SubcontRateBTF_ExecutePageDef"/>
+    <page id="view_AddEditJobTypePageDef" path="fragments.AddEditJobTypePageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="Naresco_AMDataControl" Package="model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="Naresco_AMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

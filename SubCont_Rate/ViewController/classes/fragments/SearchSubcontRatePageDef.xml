@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="SearchSubcontRatePageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Subcont_Rate_Hdr_VO" RangeSize="8" DataControl="Naresco_AMDataControl"
+              id="Subcont_Rate_Hdr_VOIterator"/>
+    <searchRegion Criteria="SearchVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="Subcont_Rate_Hdr_VOIterator" id="SubcontRateHdrSearchVCQuery"/>
+    <searchRegion Criteria="SearchVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="Subcont_Rate_Hdr_VOIterator" id="SubcontRateHdrSearchVCQuery1"/>
+    <searchRegion Criteria="SearchVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="Subcont_Rate_Hdr_VOIterator" id="SearchVCQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Subcont_Rate_Hdr_VOIterator" id="Subcont_Rate_Hdr_VO">
+      <nodeDefinition DefName="model.vo.Subcont_Rate_Hdr_VO" Name="Subcont_Rate_Hdr_VO0">
+        <AttrNames>
+          <Item Value="BusinessUnitName"/>
+          <Item Value="PeriodName"/>
+          <Item Value="Status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="Subcont_Rate_Hdr_VOIterator" id="SubconRateHdrId">
+      <AttrNames>
+        <Item Value="SubconRateHdrId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

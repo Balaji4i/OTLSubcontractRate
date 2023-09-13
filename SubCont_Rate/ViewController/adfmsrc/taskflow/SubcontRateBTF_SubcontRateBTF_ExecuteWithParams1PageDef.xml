@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="SubcontRateBTF_SubcontRateBTF_ExecuteWithParams1PageDef" Package="taskflow" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="Subcont_Rate_Hdr_VO" RangeSize="25" DataControl="Naresco_AMDataControl"
+              id="Subcont_Rate_Hdr_VOIterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="Subcont_Rate_Hdr_VOIterator" id="ExecuteWithParams" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="BV_Id" NDValue="#{pageFlowScope.Id}" NDType="java.math.BigDecimal"/>
+    </action>
+  </bindings>
+</pageDefinition>

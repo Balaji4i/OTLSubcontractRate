@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DummyJobTypeROVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="model.rovo.DummyJobTypeROVORowImpl"
+  ComponentClass="model.rovo.DummyJobTypeROVOImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="EmployeesROVO"
+    ViewObjectName="model.rovo.EmployeesROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByBu"
+      FullName="model.rovo.EmployeesROVO.findByBu"/>
+    <ParameterMap>
+      <PIMap Variable="BV_BU">
+        <TransientExpression
+          Name="ExpressionScript"
+          trustMode="untrusted"
+          CodeSourceName="DummyJobTypeROVO"/>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="JobType_Hdr_VO"
+    ViewObjectName="model.vo.JobType_Hdr_VO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findbyId"
+      FullName="model.vo.JobType_Hdr_VO.findbyId"/>
+    <ParameterMap>
+      <PIMap Variable="BV_USER_NAME">
+        <TransientExpression
+          Name="ExpressionScript"
+          CodeSourceName="DummyJobTypeROVO"/>
+      </PIMap>
+      <PIMap Variable="p_Id">
+        <TransientExpression
+          Name="ExpressionScript"
+          CodeSourceName="DummyJobTypeROVO"/>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_EmployeeNumber"
+    ListVOName="EmployeesROVO"
+    NullValueFlag="none"
+    MRUCount="0"
+    ComboRowCountHint="10">
+    <AttrArray Name="AttrNames">
+      <Item Value="EmployeeNumber"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="EmployeeName"/>
+      <Item Value="EmployeeId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PersonNumber"/>
+      <Item Value="FullName"/>
+      <Item Value="PersonId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PersonNumber"/>
+      <Item Value="FullName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="EmployeeNumVC"/>
+  </ListBinding>
+  <SQLQuery><![CDATA[select '' Employee_Id, '' Employee_Name,'' Employee_Number ,'' Job_TypeRate,'' StartDate,'' Active_Flag,'' OverTimeRate,'' IncentiveRate from dual]]></SQLQuery>
+  <ViewAttribute
+    Name="EmployeeId"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="EMPLOYEE_ID"
+    Expression="EMPLOYEE_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="EmployeeName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="400"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="EMPLOYEE_NAME"
+    Expression="EMPLOYEE_NAME"
+    SQLType="VARCHAR">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.rovo.DummyJobTypeROVO.EmployeeName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EmployeeNumber"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="EMPLOYEE_NUMBER"
+    Expression="EMPLOYEE_NUMBER"
+    SQLType="VARCHAR"
+    LOVName="LOV_EmployeeNumber">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.rovo.DummyJobTypeROVO.EmployeeNumber_LABEL"/>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="JobTyperate"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="JOB_TYPERATE"
+    Expression="JOB_TYPERATE"
+    SQLType="VARCHAR">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.rovo.DummyJobTypeROVO.JobTyperate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Startdate"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="STARTDATE"
+    Expression="STARTDATE"
+    SQLType="CHAR"/>
+  <ViewAttribute
+    Name="ActiveFlag"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="ACTIVE_FLAG"
+    Expression="ACTIVE_FLAG"
+    SQLType="CHAR"/>
+  <ViewAttribute
+    Name="Overtimerate"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="OVERTIMERATE"
+    Expression="OVERTIMERATE"
+    SQLType="VARCHAR">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.rovo.DummyJobTypeROVO.Overtimerate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Incentiverate"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="INCENTIVERATE"
+    Expression="INCENTIVERATE"
+    SQLType="VARCHAR">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.rovo.DummyJobTypeROVO.Incentiverate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BU_ID"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression
+      Name="ExpressionScript"
+      CodeSourceName="DummyJobTypeROVORow"/>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="EmployeeId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

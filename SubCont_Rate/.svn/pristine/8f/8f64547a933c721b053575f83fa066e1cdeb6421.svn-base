@@ -1,0 +1,307 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+ <f:facet name="pageContents">
+            <af:panelBox text="Job Type" id="pb1">
+                <f:facet name="toolbar">
+                    <af:toolbar id="t1">
+                        <af:button text="Save" id="b6"   actionListener="#{backingBeanScope.JobType.onClickHdrSave}"/>
+                        <af:spacer width="10" height="10" id="s6"/>
+                        <af:button text="Cancel" id="b1" action="back" immediate="true"
+                                   actionListener="#{backingBeanScope.JobType.onClickBack}"/>
+                        
+                    </af:toolbar>
+                    </f:facet>
+                <af:panelFormLayout id="pfl2">
+                    <f:facet name="footer"/>
+               
+                <af:inputComboboxListOfValues id="businessUnitNameId" disabled="#{bindings.Status.inputValue ne 'DRAFT'}"
+                                                  popupTitle="Search and Select: #{bindings.BusinessUnitName.hints.label}"
+                                                  partialTriggers="pc1:b2 b7" 
+                                                  value="#{bindings.BusinessUnitName.inputValue}" contentStyle="width:220px"
+                                                  label="#{bindings.BusinessUnitName.hints.label}"
+                                                  model="#{bindings.BusinessUnitName.listOfValuesModel}"
+                                                  required="true"
+                                                  columns="#{bindings.BusinessUnitName.hints.displayWidth}"
+                                                  shortDesc="#{bindings.BusinessUnitName.hints.tooltip}">
+                        <f:validator binding="#{bindings.BusinessUnitName.validator}"/>
+                        <af:autoSuggestBehavior suggestItems="#{bindings.BusinessUnitName.suggestItems}"/>
+                    </af:inputComboboxListOfValues>
+                    <af:inputComboboxListOfValues id="jobTypeCodeId"
+                                                  popupTitle="Search and Select: #{bindings.JobTypeCode.hints.label}"
+                                                  value="#{bindings.JobTypeCode.inputValue}"
+                                                  label="#{bindings.JobTypeCode.hints.label}"
+                                                  model="#{bindings.JobTypeCode.listOfValuesModel}"
+                                                  columns="#{bindings.JobTypeCode.hints.displayWidth}"
+                                                  shortDesc="#{bindings.JobTypeCode.hints.tooltip}"
+                                                  disabled="#{bindings.Status.inputValue ne 'DRAFT'}"
+                                                  required="true" contentStyle="width:220px"
+                                                  partialTriggers="pc1:b2 b7" autoSubmit="true">
+                        <f:validator binding="#{bindings.JobTypeCode.validator}"/>
+                        <af:autoSuggestBehavior suggestItems="#{bindings.JobTypeCode.suggestItems}"/>
+                    </af:inputComboboxListOfValues>
+                    <af:inputText value="#{bindings.JobTypeName.inputValue}" label="#{bindings.JobTypeName.hints.label}"
+                              required="true" contentStyle="width:250px" disabled="true"
+                              columns="#{bindings.JobTypeName.hints.displayWidth}"
+                                  partialTriggers="pc1:b2 b7 jobTypeCodeId"
+                              maximumLength="#{bindings.JobTypeName.hints.precision}"
+                              shortDesc="#{bindings.JobTypeName.hints.tooltip}" id="it12">
+                    <f:validator binding="#{bindings.JobTypeName.validator}"/>
+                </af:inputText>
+                 </af:panelFormLayout>
+                <af:spacer width="10" height="10" id="s5"/>
+                 
+            <af:panelBox text="JobType" id="pb2" >
+                <f:facet name="toolbar"/>
+                    <af:panelFormLayout id="pfl1" rows="3"     rendered="#{bindings.Status.inputValue ne 'DRAFT'}">
+                        <af:inputText value="#{bindings.EmployeeNumber.inputValue}" rendered="false"
+                                      valueChangeListener="#{backingBeanScope.JobType.onClickEmpNumVal}"
+                                      label="#{bindings.EmployeeNumber.hints.label}" autoSubmit="true"
+                                      required="#{bindings.EmployeeNumber.hints.mandatory}"
+                                      columns="#{bindings.EmployeeNumber.hints.displayWidth}"
+                                      maximumLength="#{bindings.EmployeeNumber.hints.precision}"
+                                      shortDesc="#{bindings.EmployeeNumber.hints.tooltip}" id="it2">
+                            <f:validator binding="#{bindings.EmployeeNumber.validator}"/>
+                        </af:inputText>
+                        <af:inputComboboxListOfValues id="employeeNumber1Id" autoSubmit="true" contentStyle="width:270px;"
+                                                      binding="#{backingBeanScope.JobType.empNum}"
+                                                      valueChangeListener="#{backingBeanScope.JobType.onClickEmpNum}"
+                                                      popupTitle="Search and Select: #{bindings.EmployeeNumber1.hints.label}"
+                                                      value="#{bindings.EmployeeNumber1.inputValue}"
+                                                      label="#{bindings.EmployeeNumber1.hints.label}"
+                                                      model="#{bindings.EmployeeNumber1.listOfValuesModel}"
+                                                      required="#{bindings.EmployeeNumber1.hints.mandatory}"
+                                                      columns="#{bindings.EmployeeNumber1.hints.displayWidth}"
+                                                      shortDesc="#{bindings.EmployeeNumber1.hints.tooltip}">
+                            <f:validator binding="#{bindings.EmployeeNumber1.validator}"/>
+                            <af:autoSuggestBehavior suggestItems="#{bindings.EmployeeNumber1.suggestItems}"/>
+                        </af:inputComboboxListOfValues>
+                        <af:inputText value="#{bindings.JobTyperate.inputValue}" contentStyle="width:300px;"
+                                      label="#{bindings.JobTyperate.hints.label}"
+                                      required="#{bindings.JobTyperate.hints.mandatory}" autoSubmit="true"
+                                      columns="#{bindings.JobTyperate.hints.displayWidth}"
+                                      maximumLength="#{bindings.JobTyperate.hints.precision}"
+                                      shortDesc="#{bindings.JobTyperate.hints.tooltip}" id="it3"
+                                      valueChangeListener="#{backingBeanScope.JobType.onEntrJobTypRate}">
+                            <f:validator binding="#{bindings.JobTyperate.validator}"/>
+                            <af:convertNumber minFractionDigits="2" maxFractionDigits="2" pattern="###,###,###,###"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Overtimerate.inputValue}" autoSubmit="true" contentStyle="width:300px;"
+                                      label="#{bindings.Overtimerate.hints.label}"
+                                      required="#{bindings.Overtimerate.hints.mandatory}"
+                                      columns="#{bindings.Overtimerate.hints.displayWidth}"
+                                      maximumLength="#{bindings.Overtimerate.hints.precision}"
+                                      shortDesc="#{bindings.Overtimerate.hints.tooltip}" id="it4" partialTriggers="it3">
+                            <f:validator binding="#{bindings.Overtimerate.validator}"/>
+                         <af:convertNumber minFractionDigits="2" maxFractionDigits="2" pattern="###,###,###,###" minIntegerDigits="1"/>   
+                        </af:inputText>
+                        <af:inputText value="#{bindings.EmployeeName.inputValue}" autoSubmit="true" contentStyle="width:300px;"
+                                      label="#{bindings.EmployeeName.hints.label}" partialTriggers="it2 employeeNumber1Id"
+                                      required="#{bindings.EmployeeName.hints.mandatory}" disabled="true"
+                                      columns="#{bindings.EmployeeName.hints.displayWidth}"
+                                      maximumLength="#{bindings.EmployeeName.hints.precision}"
+                                      shortDesc="#{bindings.EmployeeName.hints.tooltip}" id="it1">
+                            <f:validator binding="#{bindings.EmployeeName.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Incentiverate.inputValue}" autoSubmit="true" contentStyle="width:300px;"
+                                      label="#{bindings.Incentiverate.hints.label}" rendered="false"
+                                      required="#{bindings.Incentiverate.hints.mandatory}"
+                                      columns="#{bindings.Incentiverate.hints.displayWidth}"
+                                      maximumLength="#{bindings.Incentiverate.hints.precision}"
+                                      shortDesc="#{bindings.Incentiverate.hints.tooltip}" id="it5">
+                            <f:validator binding="#{bindings.Incentiverate.validator}"/>
+                            <af:convertNumber minFractionDigits="2" maxFractionDigits="2" pattern="###,###,###,###" minIntegerDigits="1"/>
+                        </af:inputText>
+                        <af:inputDate disabled="#{pageFlowScope.addEditMode eq 'editmode'}"
+                                      partialTriggers="pc1:b3 pc1:b4" value="#{bindings.Startdate.inputValue}" label="Start Date" contentStyle="width:300px;"
+                                      required="#{bindings.Startdate.hints.mandatory}" autoSubmit="true"
+                                      columns="#{bindings.Startdate.hints.displayWidth}"
+                                      shortDesc="#{bindings.Startdate.hints.tooltip}" id="id5"
+                                      valueChangeListener="#{backingBeanScope.JobType.onDoSelectStartDateVcl}">
+                            <f:validator binding="#{bindings.Startdate.validator}"/>
+                           <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:inputDate>
+                    </af:panelFormLayout>
+                </af:panelBox>
+            <af:spacer width="10" height="10" id="s1"/>
+           
+           
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth" rendered="#{bindings.Status.inputValue ne 'DRAFT'}">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                    <af:toolbar id="t4">
+                        <af:button text="Add" id="b2" partialTriggers="b3 b4" actionListener="#{backingBeanScope.JobType.onClickAddDetail}" disabled="#{pageFlowScope.addEditMode eq 'editmode'}"  >
+                            <af:setPropertyListener from="addmode" to="#{pageFlowScope.addEditMode}" type="action"/>
+                        </af:button>
+                        
+                        <af:spacer width="10" height="10" id="s2"/>
+                        <af:button text="Edit" id="b3" actionListener="#{backingBeanScope.JobType.onClickEditDtl}" rendered="#{bindings.Status.inputValue ne 'DRAFT'}">
+                        <af:setPropertyListener from="editmode" to="#{pageFlowScope.addEditMode}" type="action"/>
+                        </af:button>
+                        <af:spacer width="10" height="10" id="s3"/>
+                        <af:button text="Update" id="b4" partialTriggers="b3 b4" actionListener="#{backingBeanScope.JobType.onClickUpdate}" disabled="#{pageFlowScope.addEditMode ne 'editmode'}">
+                        <af:setPropertyListener from="addmode" to="#{pageFlowScope.addEditMode}" type="action"/>
+                        </af:button>
+                        <af:spacer width="10" height="10" id="s4"/>
+                        <af:button text="Delete" id="b5" immediate="true" disabled="#{pageFlowScope.addEditMode eq 'editmode'}" partialTriggers="b3 b4" >
+                            <af:showPopupBehavior popupId="::p1"/>
+                            <af:setPropertyListener from="addmode" to="#{pageFlowScope.addEditMode}" type="action"/>
+                        </af:button>
+                            <af:spacer width="10" height="10" id="s8"/>
+                            <af:button text="Test" id="b9" disabled="true" rendered="false"
+                                       actionListener="#{backingBeanScope.JobType.onClickTest}"/>
+                        </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.JobType_Dtl_VO.collectionModel}" var="row"
+                          binding="#{backingBeanScope.JobType.dtltable}" scrollPolicy="page"
+                          rows="#{bindings.JobType_Dtl_VO.rangeSize}"
+                          emptyText="#{bindings.JobType_Dtl_VO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0" varStatus="vs"
+                          selectedRowKeys="#{bindings.JobType_Dtl_VO.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.JobType_Dtl_VO.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.JobType_Dtl_VO.rangeSize}" id="t2"
+                          filterModel="#{bindings.JobType_Dtl_VOQuery.queryDescriptor}" filterVisible="true"
+                          queryListener="#{bindings.JobType_Dtl_VOQuery.processQuery}">
+                        <af:column headerText="S.No" width="50" id="c21" filterable="true">
+                            <af:outputText value="#{vs.index+1}" id="ot1"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.JobType_Dtl_VO.hints.EmployeeNumber.label}" id="c1"
+                                   width="200" sortProperty="#{bindings.JobType_Dtl_VO.hints.EmployeeNumber.name}"
+                                   filterable="true">
+                            <af:inputText value="#{row.bindings.EmployeeNumber.inputValue}"
+                                          label="#{bindings.JobType_Dtl_VO.hints.EmployeeNumber.label}"
+                                          required="#{bindings.JobType_Dtl_VO.hints.EmployeeNumber.mandatory}"
+                                          columns="#{bindings.JobType_Dtl_VO.hints.EmployeeNumber.displayWidth}"
+                                          maximumLength="#{bindings.JobType_Dtl_VO.hints.EmployeeNumber.precision}"
+                                          shortDesc="#{bindings.JobType_Dtl_VO.hints.EmployeeNumber.tooltip}" id="it9"
+                                          readOnly="true">
+                                <f:validator binding="#{row.bindings.EmployeeNumber.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.JobType_Dtl_VO.hints.EmployeeName.label}" id="c2" width="400"
+                                   sortProperty="#{bindings.JobType_Dtl_VO.hints.EmployeeName.name}" filterable="true">
+                            <af:inputText value="#{row.bindings.EmployeeName.inputValue}" readOnly="true"
+                                          label="#{bindings.JobType_Dtl_VO.hints.EmployeeName.label}"
+                                          required="#{bindings.JobType_Dtl_VO.hints.EmployeeName.mandatory}"
+                                          columns="#{bindings.JobType_Dtl_VO.hints.EmployeeName.displayWidth}"
+                                          maximumLength="#{bindings.JobType_Dtl_VO.hints.EmployeeName.precision}"
+                                          shortDesc="#{bindings.JobType_Dtl_VO.hints.EmployeeName.tooltip}" id="it10">
+                                <f:validator binding="#{row.bindings.EmployeeName.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.JobType_Dtl_VO.hints.JobTypeRate.label}" id="c3" width="200"
+                                   sortProperty="#{bindings.JobType_Dtl_VO.hints.JobTypeRate.name}" filterable="true">
+                            <af:inputText value="#{row.bindings.JobTypeRate.inputValue}" readOnly="true"
+                                          label="#{bindings.JobType_Dtl_VO.hints.JobTypeRate.label}"
+                                          required="#{bindings.JobType_Dtl_VO.hints.JobTypeRate.mandatory}"
+                                          columns="#{bindings.JobType_Dtl_VO.hints.JobTypeRate.displayWidth}"
+                                          maximumLength="#{bindings.JobType_Dtl_VO.hints.JobTypeRate.precision}"
+                                          shortDesc="#{bindings.JobType_Dtl_VO.hints.JobTypeRate.tooltip}" id="it7">
+                                <f:validator binding="#{row.bindings.JobTypeRate.validator}"/>
+                                <af:convertNumber minFractionDigits="2" maxFractionDigits="2"
+                                                  pattern="###,###,###,###"/>
+                            </af:inputText>
+                        </af:column>
+                          <af:column headerText="#{bindings.JobType_Dtl_VO.hints.OvertimeRate.label}" id="c5" width="200"
+                                   sortProperty="#{bindings.JobType_Dtl_VO.hints.OvertimeRate.name}" filterable="true">
+                            <af:inputText value="#{row.bindings.OvertimeRate.inputValue}" readOnly="true"
+                                          label="#{bindings.JobType_Dtl_VO.hints.OvertimeRate.label}"
+                                          required="#{bindings.JobType_Dtl_VO.hints.OvertimeRate.mandatory}"
+                                          columns="#{bindings.JobType_Dtl_VO.hints.OvertimeRate.displayWidth}"
+                                          maximumLength="#{bindings.JobType_Dtl_VO.hints.OvertimeRate.precision}"
+                                          shortDesc="#{bindings.JobType_Dtl_VO.hints.OvertimeRate.tooltip}" id="it6">
+                                <f:validator binding="#{row.bindings.OvertimeRate.validator}"/>
+                                <af:convertNumber minFractionDigits="2" maxFractionDigits="2" minIntegerDigits="1"
+                                                  pattern="###,###,###,###"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.JobType_Dtl_VO.hints.IncentiveRate.label}" id="c4" width="200" rendered="false"
+                                   sortProperty="#{bindings.JobType_Dtl_VO.hints.IncentiveRate.name}" filterable="true">
+                            <af:inputText value="#{row.bindings.IncentiveRate.inputValue}" readOnly="true"
+                                          label="#{bindings.JobType_Dtl_VO.hints.IncentiveRate.label}"
+                                          required="#{bindings.JobType_Dtl_VO.hints.IncentiveRate.mandatory}"
+                                          columns="#{bindings.JobType_Dtl_VO.hints.IncentiveRate.displayWidth}"
+                                          maximumLength="#{bindings.JobType_Dtl_VO.hints.IncentiveRate.precision}"
+                                          shortDesc="#{bindings.JobType_Dtl_VO.hints.IncentiveRate.tooltip}" id="it8">
+                                <f:validator binding="#{row.bindings.IncentiveRate.validator}"/>
+                                <af:convertNumber minFractionDigits="2" maxFractionDigits="2" minIntegerDigits="1"
+                                                  pattern="###,###,###,###"/>
+                            </af:inputText>
+                        </af:column>
+                      
+                        <af:column sortProperty="#{bindings.JobType_Dtl_VO.hints.ActiveFlag.name}" filterable="true"
+                                   headerText="#{bindings.JobType_Dtl_VO.hints.ActiveFlag.label}" id="c7" rendered="false">
+                            <af:inputText value="#{row.bindings.ActiveFlag.inputValue}" readOnly="true"
+                                          label="#{bindings.JobType_Dtl_VO.hints.ActiveFlag.label}"
+                                          required="#{bindings.JobType_Dtl_VO.hints.ActiveFlag.mandatory}"
+                                          columns="#{bindings.JobType_Dtl_VO.hints.ActiveFlag.displayWidth}"
+                                          maximumLength="#{bindings.JobType_Dtl_VO.hints.ActiveFlag.precision}"
+                                          shortDesc="#{bindings.JobType_Dtl_VO.hints.ActiveFlag.tooltip}" id="it13">
+                                <f:validator binding="#{row.bindings.ActiveFlag.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.JobType_Dtl_VO.hints.EffectiveStartDate.name}"
+                                   filterable="true" width="150"
+                                   headerText="Effective Start Date" id="c6">
+                            <f:facet name="filter">
+                                <af:inputDate value="#{bindings.JobType_Dtl_VOQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.EffectiveStartDate.value}"
+                                              id="id4" >
+                                    <af:convertDateTime pattern="#{bindings.JobType_Dtl_VO.hints.EffectiveStartDate.format}"/>
+                                </af:inputDate>
+                            </f:facet>
+                            <af:inputDate value="#{row.bindings.EffectiveStartDate.inputValue}" readOnly="true"
+                                          label="#{bindings.JobType_Dtl_VO.hints.EffectiveStartDate.label}"
+                                          required="#{bindings.JobType_Dtl_VO.hints.EffectiveStartDate.mandatory}"
+                                          columns="#{bindings.JobType_Dtl_VO.hints.EffectiveStartDate.displayWidth}"
+                                          shortDesc="#{bindings.JobType_Dtl_VO.hints.EffectiveStartDate.tooltip}"
+                                          id="id1">
+                                <f:validator binding="#{row.bindings.EffectiveStartDate.validator}"/>
+                             <af:convertDateTime pattern="dd-MM-yyyy"/>
+                            </af:inputDate>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.JobType_Dtl_VO.hints.EffectiveEndDate.name}"
+                                   filterable="true" rendered="false"
+                                   headerText="#{bindings.JobType_Dtl_VO.hints.EffectiveEndDate.label}" id="c8">
+                            <f:facet name="filter">
+                                <af:inputDate value="#{bindings.JobType_Dtl_VOQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.EffectiveEndDate.value}"
+                                              id="id3">
+                                    <af:convertDateTime pattern="#{bindings.JobType_Dtl_VO.hints.EffectiveEndDate.format}"/>
+                                </af:inputDate>
+                            </f:facet>
+                            <af:inputDate value="#{row.bindings.EffectiveEndDate.inputValue}" readOnly="true"
+                                          label="#{bindings.JobType_Dtl_VO.hints.EffectiveEndDate.label}"
+                                          required="#{bindings.JobType_Dtl_VO.hints.EffectiveEndDate.mandatory}"
+                                          columns="#{bindings.JobType_Dtl_VO.hints.EffectiveEndDate.displayWidth}"
+                                          shortDesc="#{bindings.JobType_Dtl_VO.hints.EffectiveEndDate.tooltip}"
+                                          id="id2">
+                                <f:validator binding="#{row.bindings.EffectiveEndDate.validator}"/>
+                                <af:convertDateTime pattern="#{bindings.JobType_Dtl_VO.hints.EffectiveEndDate.format}"/>
+                            </af:inputDate>
+                        </af:column>
+                    </af:table>
+            </af:panelCollection>
+                
+                <af:panelGroupLayout id="pgl2" >
+                <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                          binding="#{backingBeanScope.JobType.popUp}">
+                    <af:dialog id="d1" type="none" title="Warning" closeIconVisible="false" titleIconSource="/images/warning.png">
+                        <af:outputText value="Are you sure want to Delete this record ?" id="ot6"/>
+                        <f:facet name="buttonBar">
+                            <af:panelGroupLayout id="pgl3" layout="horizontal" halign="right">
+                                <af:button text="Ok" id="b7"
+                                           actionListener="#{backingBeanScope.JobType.onClickDeleteOk}"/>
+                                <af:spacer width="10" height="10" id="s7"/>
+                                <af:button text="Cancel" id="b8"
+                                           actionListener="#{backingBeanScope.JobType.onClickDeleteCancel}"/>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+            </af:panelGroupLayout>
+            
+             </af:panelBox>
+        </f:facet>
+ </af:pageTemplate>
+ </jsp:root>

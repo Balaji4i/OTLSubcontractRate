@@ -1,0 +1,413 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+            <af:panelBox text="Sub-Contractor Rate" id="pb1">
+                <f:facet name="toolbar">
+                    <af:toolbar id="t3">
+                        <af:button text="Save" id="b5" 
+                                   actionListener="#{backingBeanScope.SubContRate.onClickSave}"/>
+                        <af:spacer width="10" height="10" id="s6"/>
+                        <af:button text="Cancel" id="b6" action="back" immediate="true"
+                                   actionListener="#{backingBeanScope.SubContRate.onClickBack}"/>
+                    </af:toolbar>
+                </f:facet>
+                <af:outputText value="#{backingBeanScope.SubContRate.activeFlag}" id="ot2" rendered="false"
+                               partialTriggers="pc1:b1"/>
+                <af:panelFormLayout id="pfl2">
+                    <f:facet name="footer"/>
+               
+                <af:inputText value="#{bindings.SubconRateHdrId.inputValue}" label="SubContRateId"
+                                  required="#{bindings.SubconRateHdrId.hints.mandatory}" rendered="false"
+                                  columns="#{bindings.SubconRateHdrId.hints.displayWidth}"
+                                  maximumLength="#{bindings.SubconRateHdrId.hints.precision}"
+                                  shortDesc="#{bindings.SubconRateHdrId.hints.tooltip}" id="it13">
+                        <f:validator binding="#{bindings.SubconRateHdrId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.SubconRateHdrId.format}"/>
+                    </af:inputText>
+                   
+                    <af:inputComboboxListOfValues id="businessUnitName1Id" contentStyle="width:150px"
+                                                  disabled="#{bindings.Subcont_Rate_Dtl_VO.estimatedRowCount ne 0}"
+                                                  popupTitle="Search and Select: #{bindings.BusinessUnitName1.hints.label}"
+                                                  partialTriggers="pc1:b1 b7"
+                                                  value="#{bindings.BusinessUnitName1.inputValue}" label="Business Unit"
+                                                  model="#{bindings.BusinessUnitName1.listOfValuesModel}"
+                                                  required="#{bindings.BusinessUnitName1.hints.mandatory}"
+                                                  columns="#{bindings.BusinessUnitName1.hints.displayWidth}"
+                                                  shortDesc="#{bindings.BusinessUnitName1.hints.tooltip}">
+                        <f:validator binding="#{bindings.BusinessUnitName1.validator}"/>
+                        <af:autoSuggestBehavior suggestItems="#{bindings.BusinessUnitName1.suggestItems}"/>
+                    </af:inputComboboxListOfValues>
+                    <af:inputComboboxListOfValues id="projectNumberId" contentStyle="width:150px"
+                                                  popupTitle="Search and Select: #{bindings.ProjectNumber.hints.label}"
+                                                  value="#{bindings.ProjectNumber.inputValue}"
+                                                  label="Project Number"
+                                                  model="#{bindings.ProjectNumber.listOfValuesModel}"
+                                                  required="#{bindings.ProjectNumber.hints.mandatory}"
+                                                  columns="#{bindings.ProjectNumber.hints.displayWidth}"
+                                                  shortDesc="#{bindings.ProjectNumber.hints.tooltip}"
+                                                  autoSubmit="true" partialTriggers="businessUnitName1Id"
+                                                  disabled="#{bindings.Subcont_Rate_Dtl_VO.estimatedRowCount ne 0}">
+                        <f:validator binding="#{bindings.ProjectNumber.validator}"/>
+                        <af:autoSuggestBehavior suggestItems="#{bindings.ProjectNumber.suggestItems}"/>
+                    </af:inputComboboxListOfValues>
+                    <af:inputText value="#{bindings.ProjectName.inputValue}" label="Project Name"
+                                  required="#{bindings.ProjectName.hints.mandatory}"
+                                  columns="#{bindings.ProjectName.hints.displayWidth}"
+                                  maximumLength="#{bindings.ProjectName.hints.precision}"
+                                  shortDesc="#{bindings.ProjectName.hints.tooltip}" id="it23"
+                                  partialTriggers="projectNumberId" contentStyle="width:250px"
+                                  disabled="true">
+                        <f:validator binding="#{bindings.ProjectName.validator}"/>
+                    </af:inputText>
+                    <af:selectOneChoice value="#{bindings.PeriodName1.inputValue}" label="Period" contentStyle="width:180px"
+                                        disabled="#{bindings.Subcont_Rate_Dtl_VO.estimatedRowCount ne 0}"
+                                        partialTriggers="pc1:b1 b7" required="#{bindings.PeriodName1.hints.mandatory}"
+                                         shortDesc="#{bindings.PeriodName1.hints.tooltip}"
+                                        id="soc1">
+                        <f:selectItems value="#{bindings.PeriodName1.items}" id="si1"/>
+                        <f:validator binding="#{bindings.PeriodName1.validator}"/>
+                    </af:selectOneChoice>
+                </af:panelFormLayout>
+                <af:spacer width="10" height="10" id="s7"/>
+                <af:panelBox text="Sub-Contractor Rate" id="pb2">
+                    <f:facet name="toolbar"/>
+                    <af:panelFormLayout id="pfl1" rows="3" rendered="#{bindings.Status.inputValue ne 'DRAFT'}" >
+                        <af:inputText value="#{bindings.EmployeeNumber2.inputValue}" autoSubmit="true" rendered="false"
+                                      partialTriggers="pc1:b2 pc1:b1" label="#{bindings.EmployeeNumber2.hints.label}"
+                                      valueChangeListener="#{backingBeanScope.SubContRate.onClickEmpNumVal}"
+                                      required="#{bindings.EmployeeNumber2.hints.mandatory}"
+                                      columns="#{bindings.EmployeeNumber2.hints.displayWidth}"
+                                      maximumLength="#{bindings.EmployeeNumber2.hints.precision}"
+                                      shortDesc="#{bindings.EmployeeNumber2.hints.tooltip}" id="it4">
+                            <f:validator binding="#{bindings.EmployeeNumber2.validator}"/>
+                        </af:inputText>
+                        <af:inputComboboxListOfValues id="employeeNumber3Id" autoSubmit="true" contentStyle="width:270px;"
+                                                  binding="#{backingBeanScope.SubContRate.empNum}"   
+                                                   valueChangeListener="#{backingBeanScope.SubContRate.onClickEmpNum}"   
+                                                      popupTitle="Search and Select: #{bindings.EmployeeNumber3.hints.label}"
+                                                      value="#{bindings.EmployeeNumber3.inputValue}"
+                                                      label="#{bindings.EmployeeNumber3.hints.label}"
+                                                      model="#{bindings.EmployeeNumber3.listOfValuesModel}"
+                                                      required="#{bindings.EmployeeNumber3.hints.mandatory}"
+                                                      columns="#{bindings.EmployeeNumber3.hints.displayWidth}"
+                                                      shortDesc="#{bindings.EmployeeNumber3.hints.tooltip}"
+                                                      partialTriggers="pc1:b2">
+                            <f:validator binding="#{bindings.EmployeeNumber3.validator}"/>
+                            <af:autoSuggestBehavior suggestItems="#{bindings.EmployeeNumber3.suggestItems}"/>
+                        </af:inputComboboxListOfValues>
+                        <af:inputText value="#{bindings.Rate.inputValue}" label="#{bindings.Rate.hints.label}" contentStyle="width:300px;"
+                                      required="#{bindings.Rate.hints.mandatory}" partialTriggers="pc1:b2 pc1:b1"
+                                      columns="#{bindings.Rate.hints.displayWidth}" autoSubmit="true"
+                                      maximumLength="#{bindings.Rate.hints.precision}"
+                                      shortDesc="#{bindings.Rate.hints.tooltip}" id="it2">
+                            <f:validator binding="#{bindings.Rate.validator}"/>
+                             <af:convertNumber minFractionDigits="2" maxFractionDigits="2" pattern="###,###,###,###"/>
+                        </af:inputText>
+                        
+                          <af:inputText value="#{bindings.NoOfDays.inputValue}" label="#{bindings.NoOfDays.hints.label}" contentStyle="width:300px;"
+                                      required="#{bindings.NoOfDays.hints.mandatory}" partialTriggers="pc1:b2 pc1:b1"
+                                      columns="#{bindings.NoOfDays.hints.displayWidth}" autoSubmit="true"
+                                      maximumLength="#{bindings.NoOfDays.hints.precision}"
+                                      shortDesc="#{bindings.NoOfDays.hints.tooltip}" id="it7">
+                            <f:validator binding="#{bindings.NoOfDays.validator}"/>
+                             <af:convertNumber minIntegerDigits="1" minFractionDigits="2" maxFractionDigits="2" pattern="###,###,###,###"/>
+                           
+                        </af:inputText>
+ 
+                        <af:inputText value="#{bindings.EmployeeName2.inputValue}" disabled="true" contentStyle="width:300px;"
+                                      label="#{bindings.EmployeeName2.hints.label}" autoSubmit="true"
+                                      required="#{bindings.EmployeeName2.hints.mandatory}" 
+                                      partialTriggers="it4 pc1:b1 pc1:b2"
+                                      columns="#{bindings.EmployeeName2.hints.displayWidth}"
+                                      maximumLength="#{bindings.EmployeeName2.hints.precision}"
+                                      shortDesc="#{bindings.EmployeeName2.hints.tooltip}" id="it1">
+                            <f:validator binding="#{bindings.EmployeeName2.validator}"/>
+                        </af:inputText>
+                         <af:inputText value="#{bindings.Ot1Rate.inputValue}" label="#{bindings.Ot1Rate.hints.label}" contentStyle="width:300px;"
+                                      required="#{bindings.Ot1Rate.hints.mandatory}" autoSubmit="true"
+                                      partialTriggers="pc1:b2 pc1:b1" columns="#{bindings.Ot1Rate.hints.displayWidth}"
+                                      maximumLength="#{bindings.Ot1Rate.hints.precision}"
+                                      shortDesc="#{bindings.Ot1Rate.hints.tooltip}" id="it3">
+                            <f:validator binding="#{bindings.Ot1Rate.validator}"/>
+                            <af:convertNumber minIntegerDigits="1" minFractionDigits="2" maxFractionDigits="2" pattern="###,###,###,###"/>
+                        </af:inputText>
+                        
+                                             <af:inputText value="#{bindings.Ot2Rate.inputValue}" label="#{bindings.Ot2Rate.hints.label}" contentStyle="width:300px;" rendered="false"
+                                      required="#{bindings.Ot2Rate.hints.mandatory}" autoSubmit="true"
+                                      columns="#{bindings.Ot2Rate.hints.displayWidth}" partialTriggers="pc1:b2 pc1:b1"
+                                      maximumLength="#{bindings.Ot2Rate.hints.precision}"
+                                      shortDesc="#{bindings.Ot2Rate.hints.tooltip}" id="it5">
+                            <f:validator binding="#{bindings.Ot2Rate.validator}"/>
+                            <af:convertNumber minIntegerDigits="1" minFractionDigits="2" maxFractionDigits="2" pattern="###,###,###,###"/>
+                        </af:inputText>
+                          <af:inputText value="#{bindings.TotalOvertimehours.inputValue}" autoSubmit="true" contentStyle="width:300px;"
+                                      label="Total Over Time" partialTriggers="pc1:b2 pc1:b1"
+                                      required="#{bindings.TotalOvertimehours.hints.mandatory}"
+                                      columns="#{bindings.TotalOvertimehours.hints.displayWidth}"
+                                      maximumLength="#{bindings.TotalOvertimehours.hints.precision}"
+                                      shortDesc="#{bindings.TotalOvertimehours.hints.tooltip}" id="it18">
+                            <f:validator binding="#{bindings.TotalOvertimehours.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.TotalOvertimehours.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.TotalIncentivehours.inputValue}" autoSubmit="true" rendered="false"
+                                      label="Total Incentive Hours" partialTriggers="pc1:b2 pc1:b1"
+                                      required="#{bindings.TotalIncentivehours.hints.mandatory}"
+                                      columns="#{bindings.TotalIncentivehours.hints.displayWidth}"
+                                      maximumLength="#{bindings.TotalIncentivehours.hints.precision}"
+                                      shortDesc="#{bindings.TotalIncentivehours.hints.tooltip}" id="it17">
+                            <f:validator binding="#{bindings.TotalIncentivehours.validator}"/>
+                             <af:convertNumber minIntegerDigits="1" minFractionDigits="2" maxFractionDigits="2" pattern="###,###,###,###"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Bill.inputValue}" label="#{bindings.Bill.hints.label}"
+                                      required="#{bindings.Bill.hints.mandatory}"
+                                      columns="#{bindings.Bill.hints.displayWidth}"
+                                      maximumLength="#{bindings.Bill.hints.precision}"
+                                      shortDesc="#{bindings.Bill.hints.tooltip}" id="it19"
+                                      partialTriggers="pc1:b2">
+                            <f:validator binding="#{bindings.Bill.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.NetAmount.inputValue}" label="#{bindings.NetAmount.hints.label}"
+                                      required="#{bindings.NetAmount.hints.mandatory}"
+                                      columns="#{bindings.NetAmount.hints.displayWidth}"
+                                      maximumLength="#{bindings.NetAmount.hints.precision}"
+                                      shortDesc="#{bindings.NetAmount.hints.tooltip}" id="it20"
+                                      rendered="false" partialTriggers="pc1:b2">
+                            <f:validator binding="#{bindings.NetAmount.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.NetAmount.format}"/>
+                        </af:inputText>
+                    </af:panelFormLayout>
+                    <af:spacer width="10" height="10" id="s8"/>
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth" rendered="#{bindings.Status.inputValue ne 'DRAFT'}">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t2">
+                                <af:button text="Add" id="b1" disabled="#{pageFlowScope.addEditMode eq 'editmode'}"
+                                           actionListener="#{backingBeanScope.SubContRate.onClickAddDetail}"
+                                           partialTriggers="b2 b3 t1">
+                                    <af:setPropertyListener from="addmode" to="#{pageFlowScope.addEditMode}"
+                                                            type="action"/>
+                                </af:button>
+                                <af:spacer width="10" height="10" id="s2"/>
+                                <af:button text="Edit" id="b2"
+                                           actionListener="#{backingBeanScope.SubContRate.onClickEditDetail}">
+                                    <af:setPropertyListener from="editmode" to="#{pageFlowScope.addEditMode}"
+                                                            type="action"/>
+                                </af:button>
+                                <af:spacer width="10" height="10" id="s3"/>
+                                <af:button text="Update" partialTriggers="b2 b3" id="b3"
+                                           disabled="#{pageFlowScope.addEditMode ne 'editmode'}"
+                                           actionListener="#{backingBeanScope.SubContRate.onClickUpdateDetail}">
+                                   
+                                </af:button>
+                                <af:spacer width="10" height="10" id="s4"/>
+                                <af:button text="Delete" id="b4" partialTriggers="b2 b3" disabled="#{pageFlowScope.addEditMode eq 'editmode'}">
+                                    <af:showPopupBehavior popupId="::p1"/>
+                                <af:setPropertyListener from="addmode" to="#{pageFlowScope.addEditMode}"
+                                                            type="action"/>    
+                                </af:button>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.Subcont_Rate_Dtl_VO.collectionModel}" var="row"
+                                  selectedRowKeys="#{bindings.Subcont_Rate_Dtl_VO.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.Subcont_Rate_Dtl_VO.collectionModel.makeCurrent}"
+                                  binding="#{backingBeanScope.SubContRate.dtltable}" scrollPolicy="page"
+                                  rows="#{bindings.Subcont_Rate_Dtl_VO.rangeSize}" varStatus="vs"
+                                  emptyText="#{bindings.Subcont_Rate_Dtl_VO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0" fetchSize="#{bindings.Subcont_Rate_Dtl_VO.rangeSize}" id="t1"
+                                  rowSelection="single" partialTriggers="::b1 ::b2 ::b3 ::b4"
+                                  filterModel="#{bindings.Subcont_Rate_Dtl_VOQuery.queryDescriptor}"
+                                  filterVisible="true"
+                                  queryListener="#{bindings.Subcont_Rate_Dtl_VOQuery.processQuery}">
+                            <af:column headerText="S.No" width="100" filterable="true">
+                                <af:outputText value="#{vs.index+1}" id="ot1"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.Subcont_Rate_Dtl_VO.hints.EmployeeNumber.label}" id="c1"
+                                       width="200"
+                                       sortProperty="#{bindings.Subcont_Rate_Dtl_VO.hints.EmployeeNumber.name}"
+                                       filterable="true">
+                                <af:inputText value="#{row.bindings.EmployeeNumber.inputValue}"
+                                              label="#{bindings.Subcont_Rate_Dtl_VO.hints.EmployeeNumber.label}"
+                                              required="#{bindings.Subcont_Rate_Dtl_VO.hints.EmployeeNumber.mandatory}"
+                                              columns="#{bindings.Subcont_Rate_Dtl_VO.hints.EmployeeNumber.displayWidth}"
+                                              maximumLength="#{bindings.Subcont_Rate_Dtl_VO.hints.EmployeeNumber.precision}"
+                                              shortDesc="#{bindings.Subcont_Rate_Dtl_VO.hints.EmployeeNumber.tooltip}"
+                                              id="it8" readOnly="true">
+                                    <f:validator binding="#{row.bindings.EmployeeNumber.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.Subcont_Rate_Dtl_VO.hints.EmployeeName.label}" id="c2"
+                                       width="300"
+                                       sortProperty="#{bindings.Subcont_Rate_Dtl_VO.hints.EmployeeName.name}"
+                                       filterable="true">
+                                <af:inputText value="#{row.bindings.EmployeeName.inputValue}" readOnly="true"
+                                              label="#{bindings.Subcont_Rate_Dtl_VO.hints.EmployeeName.label}"
+                                              required="#{bindings.Subcont_Rate_Dtl_VO.hints.EmployeeName.mandatory}"
+                                              columns="#{bindings.Subcont_Rate_Dtl_VO.hints.EmployeeName.displayWidth}"
+                                              maximumLength="#{bindings.Subcont_Rate_Dtl_VO.hints.EmployeeName.precision}"
+                                              shortDesc="#{bindings.Subcont_Rate_Dtl_VO.hints.EmployeeName.tooltip}"
+                                              id="it9">
+                                    <f:validator binding="#{row.bindings.EmployeeName.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Subcont_Rate_Dtl_VO.hints.NoOfDays.name}"
+                                       filterable="true" width="100"
+                                       headerText="#{bindings.Subcont_Rate_Dtl_VO.hints.NoOfDays.label}" id="c6">
+                                <af:inputText value="#{row.bindings.NoOfDays.inputValue}" readOnly="true"
+                                              label="No Of Days"
+                                              required="#{bindings.Subcont_Rate_Dtl_VO.hints.NoOfDays.mandatory}"
+                                              columns="#{bindings.Subcont_Rate_Dtl_VO.hints.NoOfDays.displayWidth}"
+                                              maximumLength="#{bindings.Subcont_Rate_Dtl_VO.hints.NoOfDays.precision}"
+                                              shortDesc="#{bindings.Subcont_Rate_Dtl_VO.hints.NoOfDays.tooltip}"
+                                              id="it6">
+                                    <f:validator binding="#{row.bindings.NoOfDays.validator}"/>
+                                    <af:convertNumber minIntegerDigits="1" minFractionDigits="2" maxFractionDigits="2"
+                                                      pattern="###,###,###,###"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.Subcont_Rate_Dtl_VO.hints.RegularRate.label}" id="c3"
+                                       width="100" sortProperty="#{bindings.Subcont_Rate_Dtl_VO.hints.RegularRate.name}"
+                                       filterable="true">
+                                <af:inputText value="#{row.bindings.RegularRate.inputValue}" readOnly="true"
+                                              label="#{bindings.Subcont_Rate_Dtl_VO.hints.RegularRate.label}"
+                                              required="#{bindings.Subcont_Rate_Dtl_VO.hints.RegularRate.mandatory}"
+                                              columns="#{bindings.Subcont_Rate_Dtl_VO.hints.RegularRate.displayWidth}"
+                                              maximumLength="#{bindings.Subcont_Rate_Dtl_VO.hints.RegularRate.precision}"
+                                              shortDesc="#{bindings.Subcont_Rate_Dtl_VO.hints.RegularRate.tooltip}"
+                                              id="it10">
+                                    <f:validator binding="#{row.bindings.RegularRate.validator}"/>
+                                    <af:convertNumber minIntegerDigits="1" minFractionDigits="2" maxFractionDigits="2"
+                                                      pattern="###,###,###,###"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.Subcont_Rate_Dtl_VO.hints.OverTimeUnitRate.label}" id="c5"
+                                       width="100"
+                                       sortProperty="#{bindings.Subcont_Rate_Dtl_VO.hints.OverTimeUnitRate.name}"
+                                       filterable="true">
+                                <af:inputText value="#{row.bindings.OverTimeUnitRate.inputValue}" readOnly="true"
+                                              label="#{bindings.Subcont_Rate_Dtl_VO.hints.OverTimeUnitRate.label}"
+                                              required="#{bindings.Subcont_Rate_Dtl_VO.hints.OverTimeUnitRate.mandatory}"
+                                              columns="#{bindings.Subcont_Rate_Dtl_VO.hints.OverTimeUnitRate.displayWidth}"
+                                              maximumLength="#{bindings.Subcont_Rate_Dtl_VO.hints.OverTimeUnitRate.precision}"
+                                              shortDesc="#{bindings.Subcont_Rate_Dtl_VO.hints.OverTimeUnitRate.tooltip}"
+                                              id="it12">
+                                    <f:validator binding="#{row.bindings.OverTimeUnitRate.validator}"/>
+                                    <af:convertNumber minIntegerDigits="1" minFractionDigits="2" maxFractionDigits="2"
+                                                      pattern="###,###,###,###"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.Subcont_Rate_Dtl_VO.hints.IncentiveUnitRate.label}"
+                                       id="c4" width="100" rendered="false"
+                                       sortProperty="#{bindings.Subcont_Rate_Dtl_VO.hints.IncentiveUnitRate.name}"
+                                       filterable="true">
+                                <af:inputText value="#{row.bindings.IncentiveUnitRate.inputValue}" readOnly="true"
+                                              label="#{bindings.Subcont_Rate_Dtl_VO.hints.IncentiveUnitRate.label}"
+                                              required="#{bindings.Subcont_Rate_Dtl_VO.hints.IncentiveUnitRate.mandatory}"
+                                              columns="#{bindings.Subcont_Rate_Dtl_VO.hints.IncentiveUnitRate.displayWidth}"
+                                              maximumLength="#{bindings.Subcont_Rate_Dtl_VO.hints.IncentiveUnitRate.precision}"
+                                              shortDesc="#{bindings.Subcont_Rate_Dtl_VO.hints.IncentiveUnitRate.tooltip}"
+                                              id="it11">
+                                    <f:validator binding="#{row.bindings.IncentiveUnitRate.validator}"/>
+                                    <af:convertNumber minIntegerDigits="1" minFractionDigits="2" maxFractionDigits="2"
+                                                      pattern="###,###,###,###"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Subcont_Rate_Dtl_VO.hints.TotalOvertimeHours.name}"
+                                       filterable="true" width="100"
+                                       headerText="#{bindings.Subcont_Rate_Dtl_VO.hints.TotalOvertimeHours.label}"
+                                       id="c9">
+                                <af:inputText value="#{row.bindings.TotalOvertimeHours.inputValue}" readOnly="true"
+                                              label="#{bindings.Subcont_Rate_Dtl_VO.hints.TotalOvertimeHours.label}"
+                                              required="#{bindings.Subcont_Rate_Dtl_VO.hints.TotalOvertimeHours.mandatory}"
+                                              columns="#{bindings.Subcont_Rate_Dtl_VO.hints.TotalOvertimeHours.displayWidth}"
+                                              maximumLength="#{bindings.Subcont_Rate_Dtl_VO.hints.TotalOvertimeHours.precision}"
+                                              shortDesc="#{bindings.Subcont_Rate_Dtl_VO.hints.TotalOvertimeHours.tooltip}"
+                                              id="it15">
+                                    <f:validator binding="#{row.bindings.TotalOvertimeHours.validator}"/>
+                                    <af:convertNumber minIntegerDigits="1" minFractionDigits="2" maxFractionDigits="2"
+                                                      pattern="###,###,###,###"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Subcont_Rate_Dtl_VO.hints.TotalIncentiveHours.name}"
+                                       filterable="true" width="100" rendered="false"
+                                       headerText="#{bindings.Subcont_Rate_Dtl_VO.hints.TotalIncentiveHours.label}"
+                                       id="c8">
+                                <af:inputText value="#{row.bindings.TotalIncentiveHours.inputValue}" readOnly="true"
+                                              rendered="false"
+                                              label="#{bindings.Subcont_Rate_Dtl_VO.hints.TotalIncentiveHours.label}"
+                                              required="#{bindings.Subcont_Rate_Dtl_VO.hints.TotalIncentiveHours.mandatory}"
+                                              columns="#{bindings.Subcont_Rate_Dtl_VO.hints.TotalIncentiveHours.displayWidth}"
+                                              maximumLength="#{bindings.Subcont_Rate_Dtl_VO.hints.TotalIncentiveHours.precision}"
+                                              shortDesc="#{bindings.Subcont_Rate_Dtl_VO.hints.TotalIncentiveHours.tooltip}"
+                                              id="it16">
+                                    <f:validator binding="#{row.bindings.TotalIncentiveHours.validator}"/>
+                                    <af:convertNumber minIntegerDigits="1" minFractionDigits="2" maxFractionDigits="2"
+                                                      pattern="###,###,###,###"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Subcont_Rate_Dtl_VO.hints.Amount.name}"
+                                       filterable="true" width="100" headerText="Total Amount" id="c7">
+                                <af:inputText value="#{row.bindings.Amount.inputValue}" readOnly="true"
+                                              label="Total Amount"
+                                              required="#{bindings.Subcont_Rate_Dtl_VO.hints.Amount.mandatory}"
+                                              columns="#{bindings.Subcont_Rate_Dtl_VO.hints.Amount.displayWidth}"
+                                              maximumLength="#{bindings.Subcont_Rate_Dtl_VO.hints.Amount.precision}"
+                                              shortDesc="#{bindings.Subcont_Rate_Dtl_VO.hints.Amount.tooltip}"
+                                              id="it14">
+                                    <f:validator binding="#{row.bindings.Amount.validator}"/>
+                                    <af:convertNumber minIntegerDigits="1" minFractionDigits="2" maxFractionDigits="2"
+                                                      pattern="###,###,###,###"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Subcont_Rate_Dtl_VO.hints.Bill.name}" filterable="true"
+                                       headerText="#{bindings.Subcont_Rate_Dtl_VO.hints.Bill.label}" id="c10">
+                                <af:inputText value="#{row.bindings.Bill.inputValue}"
+                                              label="#{bindings.Subcont_Rate_Dtl_VO.hints.Bill.label}"
+                                              required="#{bindings.Subcont_Rate_Dtl_VO.hints.Bill.mandatory}"
+                                              columns="#{bindings.Subcont_Rate_Dtl_VO.hints.Bill.displayWidth}"
+                                              maximumLength="#{bindings.Subcont_Rate_Dtl_VO.hints.Bill.precision}"
+                                              shortDesc="#{bindings.Subcont_Rate_Dtl_VO.hints.Bill.tooltip}" id="it21">
+                                    <f:validator binding="#{row.bindings.Bill.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Subcont_Rate_Dtl_VO.hints.Netamount.name}"
+                                       filterable="true" visible="false"
+                                       headerText="Net Amount" id="c11">
+                                <af:inputText value="#{row.bindings.Netamount.inputValue}"
+                                              label="#{bindings.Subcont_Rate_Dtl_VO.hints.Netamount.label}"
+                                              required="#{bindings.Subcont_Rate_Dtl_VO.hints.Netamount.mandatory}"
+                                              columns="#{bindings.Subcont_Rate_Dtl_VO.hints.Netamount.displayWidth}"
+                                              maximumLength="#{bindings.Subcont_Rate_Dtl_VO.hints.Netamount.precision}"
+                                              shortDesc="#{bindings.Subcont_Rate_Dtl_VO.hints.Netamount.tooltip}"
+                                              id="it22">
+                                    <f:validator binding="#{row.bindings.Netamount.validator}"/>
+                                    <af:convertNumber minIntegerDigits="1" minFractionDigits="2" maxFractionDigits="2"
+                                                      pattern="###,###,###,###"/>
+                                </af:inputText>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                    <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                              binding="#{backingBeanScope.SubContRate.popUp}">
+                        <af:dialog id="d1" type="none" title="Warning" closeIconVisible="false"
+                                   titleIconSource="/images/warning.png" contentWidth="250" contentHeight="30">
+                            <af:panelGroupLayout id="pgl4" layout="vertical">
+                                <af:outputText value="Are you sure  want to Delete this record ?" id="ot6"/>
+                                <af:spacer width="10" height="10" id="s10"/>
+                                <af:panelGroupLayout id="pgl3" layout="horizontal" halign="right">
+                                    <af:button text="Ok" id="b7"
+                                               actionListener="#{backingBeanScope.SubContRate.onClickDeleteOk}"/>
+                                    <af:spacer width="10" height="10" id="s9"/>
+                                    <af:button text="Cancel" id="b8"
+                                               actionListener="#{backingBeanScope.SubContRate.onClickDeleteCancel}"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:dialog>
+                    </af:popup>
+                </af:panelBox>
+            </af:panelBox>
+        </f:facet>
+    </af:pageTemplate>
+</jsp:root>

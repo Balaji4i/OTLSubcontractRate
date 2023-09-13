@@ -1,0 +1,20 @@
+af|query::criterion af|selectOneChoice::content {
+    width: 220px;
+    padding:5px;
+}
+af|query::criterion af|inputText::content {
+    width: 200px;
+    padding:5px;
+}
+af|query::criterion af|inputListOfValues::content {
+    width: 200px;
+    padding:5px;
+}
+af|query::criterion af|inputDate::content {
+    width: 220px;
+    padding:5px;
+}
+af|query::criterion af|inputComboboxListOfValues::content {
+    width: 190px;
+    padding:5px;
+}

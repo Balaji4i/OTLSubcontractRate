@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="AddEditJobTypePageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="JobType_Hdr_VO" RangeSize="25" DataControl="Naresco_AMDataControl" id="JobType_Hdr_VOIterator"/>
+    <iterator Binds="JobType_Dtl_VO" RangeSize="10" DataControl="Naresco_AMDataControl" id="JobType_Dtl_VOIterator"/>
+    <iterator Binds="DummyJobTypeROVO" RangeSize="25" DataControl="Naresco_AMDataControl"
+              id="DummyJobTypeROVOIterator"/>
+    <searchRegion Binds="JobType_Dtl_VOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="JobType_Dtl_VOQuery"/>
+    <iterator id="JobType_Dtl_VO1Iterator" Binds="JobType_Dtl_VO1" DataControl="Naresco_AMDataControl" RangeSize="25"/>
+    <iterator id="JobDateValidation_ROVOIterator" Binds="JobDateValidation_ROVO" DataControl="Naresco_AMDataControl"
+              RangeSize="25"/>
+  </executables>
+  <bindings>
+    <listOfValues IterBinding="JobType_Hdr_VOIterator" StaticList="false" Uses="BU_LOV" id="BusinessUnitName"/>
+    <action IterBinding="JobType_Dtl_VOIterator" id="CreateInsert" InstanceName="Naresco_AMDataControl.JobType_Dtl_VO"
+            DataControl="Naresco_AMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" DataControl="Naresco_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="Naresco_AMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="DummyJobTypeROVOIterator" id="EmployeeName">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummyJobTypeROVOIterator" id="EmployeeNumber">
+      <AttrNames>
+        <Item Value="EmployeeNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummyJobTypeROVOIterator" id="JobTyperate">
+      <AttrNames>
+        <Item Value="JobTyperate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummyJobTypeROVOIterator" id="Overtimerate">
+      <AttrNames>
+        <Item Value="Overtimerate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummyJobTypeROVOIterator" id="Incentiverate">
+      <AttrNames>
+        <Item Value="Incentiverate"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="JobType_Dtl_VOIterator" id="JobType_Dtl_VO">
+      <nodeDefinition DefName="model.vo.JobType_Dtl_VO" Name="JobType_Dtl_VO0">
+        <AttrNames>
+          <Item Value="EmployeeNumber"/>
+          <Item Value="EmployeeName"/>
+          <Item Value="JobTypeRate"/>
+          <Item Value="IncentiveRate"/>
+          <Item Value="OvertimeRate"/>
+          <Item Value="ActiveFlag"/>
+          <Item Value="EffectiveStartDate"/>
+          <Item Value="EffectiveEndDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="JobType_Dtl_VOIterator" id="Delete" InstanceName="Naresco_AMDataControl.JobType_Dtl_VO"
+            DataControl="Naresco_AMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="JobType_Dtl_VOIterator" id="JobType_Dtl_VO1">
+      <nodeDefinition DefName="model.vo.JobType_Dtl_VO" Name="JobType_Dtl_VO10">
+        <AttrNames>
+          <Item Value="IncentiveRate"/>
+          <Item Value="JobTypeRate"/>
+          <Item Value="OvertimeRate"/>
+          <Item Value="EmployeeName"/>
+          <Item Value="EmployeeNumber"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="JobType_Hdr_VOIterator" id="JobTypeCode">
+      <AttrNames>
+        <Item Value="JobTypeCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobType_Hdr_VOIterator" id="JobTypeName">
+      <AttrNames>
+        <Item Value="JobTypeName"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="DummyJobTypeROVOIterator" StaticList="false" Uses="LOV_EmployeeNumber"
+                  id="EmployeeNumber1"/>
+    <attributeValues IterBinding="DummyJobTypeROVOIterator" id="Startdate">
+      <AttrNames>
+        <Item Value="Startdate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobType_Hdr_VOIterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

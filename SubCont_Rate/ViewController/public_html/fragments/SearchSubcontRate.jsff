@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+         <af:panelGroupLayout id="pgl2" layout="vertical" >
+                <af:panelGroupLayout id="pgl1" layout="vertical"  halign="end">
+                    <af:commandButton text="DashBoard" id="cb2" icon="/images/back_dis.png" inlineStyle="margin-right:5px"
+                                      action="ToDashboard"/>
+                </af:panelGroupLayout>
+                <af:spacer width="10" height="10" id="s1"/>
+               
+                   
+                    <af:panelHeader text="Sub-Contract Rate" id="ph3">
+                        <af:query id="qryId3" headerText="Search" disclosed="true" resultComponentId="::pc1:resId1"
+                                  value="#{bindings.SearchVCQuery.queryDescriptor}"
+                                  model="#{bindings.SearchVCQuery.queryModel}"
+                                  queryListener="#{bindings.SearchVCQuery.processQuery}"
+                                  queryOperationListener="#{bindings.SearchVCQuery.processQueryOperation}"/>
+                    </af:panelHeader>
+               
+                <af:panelBox text="Search Result" id="pb1">
+                    <f:facet name="toolbar"/>
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t1" flex="1">
+                                <af:link text="" icon="/images/func_add_16_ena.png" id="l1"
+                                             hoverIcon="/images/func_add_16_hov.png" partialSubmit="true" action="add">
+                                             <af:setPropertyListener from="addmode" to="#{pageFlowScope.addEditMode}" type="action"/>
+                                             <!--<af:setPropertyListener from="#{'add'}" to="#{pageFlowScope.mode}"
+                                                                type="action"/>
+                                        <af:setPropertyListener from="#{null}" to="#{pageFlowScope.headerId}"
+                                                                type="action"/>-->
+                                             </af:link>
+                                <af:spacer width="10" height="10" id="s2"/>
+                                <af:link text=""  hoverIcon="/images/func_pencil_16_hov.png" action="edit"
+                                             depressedIcon="/images/func_pencil_16_act.png"
+                                             icon="/images/func_pencil_16_ena.png" partialSubmit="true"
+                                             disabledIcon="/images/func_pencil_16_dis.png" id="l2"
+                                         actionListener="#{backingBeanScope.SubContRate.onClickEdit}">
+                                              <!--<af:setPropertyListener from="#{'edit'}" to="#{pageFlowScope.mode}"
+                                                                type="action"/>-->
+                                        <af:setPropertyListener from="#{bindings.SubconRateHdrId.inputValue}"
+                                                                to="#{pageFlowScope.Id}" type="action"/>
+                                                <af:setPropertyListener from="addmode" to="#{pageFlowScope.addEditMode}" type="action"/>
+                                             </af:link>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.Subcont_Rate_Hdr_VO.collectionModel}" var="row" selectedRowKeys="#{bindings.Subcont_Rate_Hdr_VO.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.Subcont_Rate_Hdr_VO.collectionModel.makeCurrent}" 
+                                  rows="#{bindings.Subcont_Rate_Hdr_VO.rangeSize}" varStatus="vs" scrollPolicy="page"
+                                  emptyText="#{bindings.Subcont_Rate_Hdr_VO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0" fetchSize="#{bindings.Subcont_Rate_Hdr_VO.rangeSize}"
+                                  id="resId1" rowSelection="single" >
+                            <af:column headerText="S.No" width="50">
+                                <af:outputText value="#{vs.index+1}" id="ot4"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.Subcont_Rate_Hdr_VO.hints.BusinessUnitName.label}"
+                                       id="resId1c2" width="300">
+                                <af:outputText value="#{row.BusinessUnitName}"
+                                               shortDesc="#{bindings.Subcont_Rate_Hdr_VO.hints.BusinessUnitName.tooltip}"
+                                               id="ot2"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.Subcont_Rate_Hdr_VO.hints.PeriodName.label}" id="resId1c1"
+                                       width="200">
+                                <af:outputText value="#{row.PeriodName}"
+                                               shortDesc="#{bindings.Subcont_Rate_Hdr_VO.hints.PeriodName.tooltip}"
+                                               id="ot1"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.Subcont_Rate_Hdr_VO.hints.Status.label}" id="resId1c3"
+                                       width="200" rendered="false">
+                                <af:outputText value="#{row.Status}"  rendered="false"
+                                               shortDesc="#{bindings.Subcont_Rate_Hdr_VO.hints.Status.tooltip}"
+                                               id="ot3"/>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                </af:panelBox>
+            </af:panelGroupLayout>
+               
+               </f:facet>
+    </af:pageTemplate>
+</jsp:root>

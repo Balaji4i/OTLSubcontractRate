@@ -1,0 +1,26 @@
+//Groovy Scripts for model.rovo.DummySubRateROVO
+
+package model.rovo
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="EmployeesROVO", name="BV_BU")
+def BV_BU_EmployeesROVO_BindVariable_BoundParameter()
+{
+BU_ID
+}
+
+
+@AccessorParameterExpression(accessorName="Subcont_Rate_Hdr_VO1", name="BV_USER_NAME")
+def BV_USER_NAME_Subcont_Rate_Hdr_VO1_BindVariable_BoundParameter()
+{
+adf.context.sessionScope.userName
+}
+
+
+@AccessorParameterExpression(accessorName="Subcont_Rate_Hdr_VO1", name="p_Id")
+def p_Id_Subcont_Rate_Hdr_VO1_BindVariable_BoundParameter()
+{
+adf.context.pageFlowScope.headerId
+}
+

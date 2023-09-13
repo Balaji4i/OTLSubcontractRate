@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="AddEditSubcontRatePageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Subcont_Rate_Hdr_VO" RangeSize="25" DataControl="Naresco_AMDataControl"
+              id="Subcont_Rate_Hdr_VOIterator"/>
+    <iterator Binds="Subcont_Rate_Dtl_VO" RangeSize="10" DataControl="Naresco_AMDataControl"
+              id="Subcont_Rate_Dtl_VOIterator"/>
+    <iterator Binds="JobType_Dtl_VO" RangeSize="10" DataControl="Naresco_AMDataControl" id="JobType_Dtl_VOIterator"/>
+    <iterator Binds="DummySubRateROVO" RangeSize="25" DataControl="Naresco_AMDataControl"
+              id="DummySubRateROVOIterator"/>
+    <searchRegion Binds="Subcont_Rate_Dtl_VOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="Subcont_Rate_Dtl_VOQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Subcont_Rate_Hdr_VOIterator" id="BusinessUnitName">
+      <AttrNames>
+        <Item Value="BusinessUnitName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Subcont_Rate_Hdr_VOIterator" id="PeriodName">
+      <AttrNames>
+        <Item Value="PeriodName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Subcont_Rate_Dtl_VOIterator" id="EmployeeNumber">
+      <AttrNames>
+        <Item Value="EmployeeNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Subcont_Rate_Dtl_VOIterator" id="RegularRate">
+      <AttrNames>
+        <Item Value="RegularRate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Subcont_Rate_Dtl_VOIterator" id="EmployeeName">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Subcont_Rate_Dtl_VOIterator" id="OverTimeUnitRate">
+      <AttrNames>
+        <Item Value="OverTimeUnitRate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Subcont_Rate_Dtl_VOIterator" id="IncentiveUnitRate">
+      <AttrNames>
+        <Item Value="IncentiveUnitRate"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="Subcont_Rate_Dtl_VOIterator" id="Subcont_Rate_Dtl_VO">
+      <nodeDefinition DefName="model.vo.Subcont_Rate_Dtl_VO" Name="Subcont_Rate_Dtl_VO0">
+        <AttrNames>
+          <Item Value="EmployeeNumber"/>
+          <Item Value="EmployeeName"/>
+          <Item Value="NoOfDays"/>
+          <Item Value="RegularRate"/>
+          <Item Value="OverTimeUnitRate"/>
+          <Item Value="IncentiveUnitRate"/>
+          <Item Value="TotalOvertimeHours"/>
+          <Item Value="TotalIncentiveHours"/>
+          <Item Value="Amount"/>
+          <Item Value="Bill"/>
+          <Item Value="Netamount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="Subcont_Rate_Hdr_VOIterator" id="SubconRateHdrId">
+      <AttrNames>
+        <Item Value="SubconRateHdrId"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="Subcont_Rate_Hdr_VOIterator" StaticList="false" Uses="LOV_BusinessUnitName"
+                  id="BusinessUnitName1"/>
+    <list IterBinding="Subcont_Rate_Hdr_VOIterator" StaticList="false" Uses="LOV_PeriodName" id="PeriodName1"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="DummyROVOIterator" id="EmployeeName1">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummyROVOIterator" id="EmployeeNumber1">
+      <AttrNames>
+        <Item Value="EmployeeNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummyROVOIterator" id="RegularHours">
+      <AttrNames>
+        <Item Value="RegularHours"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummyROVOIterator" id="Overtimehours">
+      <AttrNames>
+        <Item Value="Overtimehours"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummyROVOIterator" id="Incentivehours">
+      <AttrNames>
+        <Item Value="Incentivehours"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummySubRateROVOIterator" id="EmployeeName2">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummySubRateROVOIterator" id="Rate">
+      <AttrNames>
+        <Item Value="Rate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummySubRateROVOIterator" id="Ot1Rate">
+      <AttrNames>
+        <Item Value="Ot1Rate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummySubRateROVOIterator" id="EmployeeNumber2">
+      <AttrNames>
+        <Item Value="EmployeeNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummySubRateROVOIterator" id="Ot2Rate">
+      <AttrNames>
+        <Item Value="Ot2Rate"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="Naresco_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="Naresco_AMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="Subcont_Rate_Dtl_VOIterator" id="Trans_Flag">
+      <AttrNames>
+        <Item Value="Trans_Flag"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Subcont_Rate_Dtl_VOIterator" id="ActiveYn">
+      <AttrNames>
+        <Item Value="ActiveYn"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="Subcont_Rate_Dtl_VOIterator" id="Delete"
+            InstanceName="Naresco_AMDataControl.Subcont_Rate_Dtl_VO" DataControl="Naresco_AMDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <listOfValues IterBinding="DummySubRateROVOIterator" StaticList="false" Uses="LOV_EmployeeNumber"
+                  id="EmployeeNumber3"/>
+    <attributeValues IterBinding="DummySubRateROVOIterator" id="NoOfDays">
+      <AttrNames>
+        <Item Value="NoOfDays"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Subcont_Rate_Hdr_VOIterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummySubRateROVOIterator" id="TotalIncentivehours">
+      <AttrNames>
+        <Item Value="TotalIncentivehours"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummySubRateROVOIterator" id="TotalOvertimehours">
+      <AttrNames>
+        <Item Value="TotalOvertimehours"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummySubRateROVOIterator" id="Bill">
+      <AttrNames>
+        <Item Value="Bill"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummySubRateROVOIterator" id="NetAmount">
+      <AttrNames>
+        <Item Value="NetAmount"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="JobTypeHdrLine_VL"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  EntityAssociation="model.association.JobTypeHdrLine_Ass">
+  <ViewLinkDefEnd
+    Name="JobType_Hdr_VO"
+    Cardinality="1"
+    Source="true"
+    Owner="model.vo.JobType_Hdr_VO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="JobType_Hdr_VO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.vo.JobType_Hdr_VO.JobTypeHdrId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="JobType_Dtl_VO"
+    Cardinality="-1"
+    Owner="model.vo.JobType_Dtl_VO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="JobType_Dtl_VO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.vo.JobType_Dtl_VO.JobTypeHdrId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

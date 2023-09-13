@@ -1,0 +1,19 @@
+//Groovy Scripts for model.rovo.DummyJobTypeROVO
+
+package model.rovo
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="BU_ID")
+def BU_ID_ExpressionScript_Expression()
+{
+if( JobType_Hdr_VO.first()!=null)
+{
+return JobType_Hdr_VO.first().getAttribute("BusinessUnitId");
+}
+else
+{
+return "";
+}
+}
+

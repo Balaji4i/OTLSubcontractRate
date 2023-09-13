@@ -1,0 +1,12 @@
+//Groovy Scripts for model.vo.Subcont_Rate_Hdr_VO
+
+package model.vo
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="ProjectRoVo1", name="b_bu_id")
+def b_bu_id_ProjectRoVo1_BindVariable_BoundParameter()
+{
+BusinessUnitId
+}
+

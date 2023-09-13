@@ -1,0 +1,25 @@
+//Groovy Scripts for model.rovo.DummyJobTypeROVO
+
+package model.rovo
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="JobType_Hdr_VO", name="BV_USER_NAME")
+def BV_USER_NAME_JobType_Hdr_VO_BindVariable_BoundParameter()
+{
+adf.context.sessionScope.userName
+}
+
+@AccessorParameterExpression(accessorName="JobType_Hdr_VO", name="p_Id")
+def p_Id_JobType_Hdr_VO_BindVariable_BoundParameter()
+{
+adf.context.pageFlowScope.Id
+}
+
+
+@AccessorParameterExpression(accessorName="EmployeesROVO", name="BV_BU")
+def BV_BU_EmployeesROVO_BindVariable_BoundParameter()
+{
+BU_ID
+}
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="SearchJobTypePageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="JobType_Hdr_VO" RangeSize="8" DataControl="Naresco_AMDataControl" id="JobType_Hdr_VOIterator"/>
+    <searchRegion Criteria="SearchVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="JobType_Hdr_VOIterator" id="SearchVCQuery"/>
+    <searchRegion Criteria="SearchVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="JobType_Hdr_VOIterator" id="SearchVCQuery1"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="JobType_Hdr_VOIterator" id="JobType_Hdr_VO">
+      <nodeDefinition DefName="model.vo.JobType_Hdr_VO" Name="JobType_Hdr_VO0">
+        <AttrNames>
+          <Item Value="BusinessUnitName"/>
+          <Item Value="JobTypeCode"/>
+          <Item Value="JobTypeName"/>
+          <Item Value="Status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="JobType_Hdr_VOIterator" id="JobTypeHdrId">
+      <AttrNames>
+        <Item Value="JobTypeHdrId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobType_Hdr_VOIterator" id="BusinessUnitId">
+      <AttrNames>
+        <Item Value="BusinessUnitId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

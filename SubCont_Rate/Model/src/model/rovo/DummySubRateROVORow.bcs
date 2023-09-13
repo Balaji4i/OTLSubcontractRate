@@ -1,0 +1,19 @@
+//Groovy Scripts for model.rovo.DummySubRateROVO
+
+package model.rovo
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="BU_ID")
+def BU_ID_ExpressionScript_Expression()
+{
+if( Subcont_Rate_Hdr_VO1.first()!=null)
+{
+return Subcont_Rate_Hdr_VO1.first().getAttribute("BusinessUnitId");
+}
+else
+{
+return "";
+}
+}
+
